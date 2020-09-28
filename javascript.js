@@ -70,7 +70,10 @@ const subtract = (number1, number2) => {
 };
 
 const multiply = (number1, number2) => {
-  return number1 * number2;
+  let calculation = number1 * number2;
+  calculation = calculation.toFixed(15).replace(/0+$/, "")
+  return calculation
+  
 };
 
 const divide = (number1, number2) => {
@@ -81,7 +84,9 @@ const divide = (number1, number2) => {
 };
 
 const percentage = (number1, number2) => {
-  return (number2 / 100) * number1;
+  let calculation = (number2 / 100) * number1
+  calculation = Math.round(calculation*100)/100
+  return calculation;
 };
 
 const operate = function (operator, number1, number2) {
