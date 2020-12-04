@@ -71,6 +71,7 @@ const subtract = (number1, number2) => {
 
 const multiply = (number1, number2) => {
   let calculation = number1 * number2;
+  calculation = calculation.toFixed(10).replace(/0+$/, "");
   return calculation;
 };
 
