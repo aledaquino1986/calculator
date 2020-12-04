@@ -11,7 +11,7 @@ let userInputValueWhenTyping = "";
 let runningTotal;
 let storedOperator;
 
-const addTextToScreen = (event) => {
+const addTextToScreen = event => {
   const typedNumber = event.target.textContent;
   if (
     typedNumber === "0" &&
@@ -71,9 +71,7 @@ const subtract = (number1, number2) => {
 
 const multiply = (number1, number2) => {
   let calculation = number1 * number2;
-  calculation = calculation.toFixed(15).replace(/0+$/, "")
-  return calculation
-  
+  return calculation;
 };
 
 const divide = (number1, number2) => {
@@ -84,8 +82,8 @@ const divide = (number1, number2) => {
 };
 
 const percentage = (number1, number2) => {
-  let calculation = (number2 / 100) * number1
-  calculation = Math.round(calculation*100)/100
+  let calculation = (number2 / 100) * number1;
+  calculation = Math.round(calculation * 100) / 100;
   return calculation;
 };
 
@@ -136,7 +134,7 @@ const provideSolution = () => {
 const addEventListenerToNumbers = () => {
   const numberButtons = document.querySelectorAll(".number");
 
-  numberButtons.forEach((numberButton) => {
+  numberButtons.forEach(numberButton => {
     numberButton.addEventListener("click", function (e) {
       addTextToScreen(e);
     });
@@ -144,7 +142,7 @@ const addEventListenerToNumbers = () => {
 };
 
 const addEventListenerToDecimalButton = () => {
-  decimalButton.addEventListener("click", (e) => {
+  decimalButton.addEventListener("click", e => {
     if (!userInputValueWhenTyping.includes(".")) {
       addTextToScreen(e);
     }
@@ -180,8 +178,8 @@ const addEventListenerToPosNeg = () => {
 };
 
 const addEventListenerToOperators = () => {
-  operators.forEach((operator) => {
-    operator.addEventListener("click", (e) => {
+  operators.forEach(operator => {
+    operator.addEventListener("click", e => {
       operator = e.target.innerText;
       provideSolution();
 
