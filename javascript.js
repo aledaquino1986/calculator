@@ -11,8 +11,11 @@ let userInputValueWhenTyping = "";
 let runningTotal;
 let storedOperator;
 
+const fixFloatingPoint = val => Number.parseFloat(val.toPrecision(13));
+
 const addTextToScreen = event => {
   const typedNumber = event.target.textContent;
+
   if (
     typedNumber === "0" &&
     calculatorScreen.innerText === "0" &&
@@ -26,12 +29,8 @@ const addTextToScreen = event => {
     calculatorScreen.innerText = userInputValueWhenTyping;
   }
 
-  if (calculatorScreen.innerText.length > 15) {
-    return;
-  } else {
-    userInputValueWhenTyping += typedNumber;
-    calculatorScreen.innerText = userInputValueWhenTyping;
-  }
+  userInputValueWhenTyping += typedNumber;
+  calculatorScreen.innerText = userInputValueWhenTyping;
 };
 
 const removeOneCharacterFromScreen = () => {
@@ -66,20 +65,23 @@ const add = (number1, number2) => {
 };
 
 const subtract = (number1, number2) => {
+  console.log(number1, number2);
   return number1 - number2;
 };
 
 const multiply = (number1, number2) => {
   let calculation = number1 * number2;
-  calculation = calculation.toFixed(10).replace(/0+$/, "");
+  calculation = calculation;
   return calculation;
 };
 
 const divide = (number1, number2) => {
   if (number2 == 0) {
-    return "Error";
+    calculatorScreen.innerText = "Error";
+    return;
+  } else {
+    return number1 / number2;
   }
-  return number1 / number2;
 };
 
 const percentage = (number1, number2) => {
@@ -89,32 +91,39 @@ const percentage = (number1, number2) => {
 };
 
 const operate = function (operator, number1, number2) {
+  console.log(number1);
+  console.log(number2);
   number1 = parseFloat(number1);
   number2 = parseFloat(number2);
 
-  if (!operator || !number1 || !number2) {
+  if (!operator || !number1 || (!number2 && number2 !== 0)) {
     return;
+  }
+
+  if (isNaN(number1) || isNaN(number2)) {
+    return Number.NaN;
   }
 
   switch (operator) {
     case "+":
-      calculation = add(number1, number2);
+      calculation = fixFloatingPoint(add(number1, number2));
       break;
     case "-":
-      calculation = subtract(number1, number2);
+      calculation = fixFloatingPoint(subtract(number1, number2));
       break;
     case "x":
-      calculation = multiply(number1, number2);
+      calculation = fixFloatingPoint(multiply(number1, number2));
       break;
     case "/":
-      calculation = divide(number1, number2);
+      calculation = fixFloatingPoint(divide(number1, number2));
       break;
     case "%":
-      calculation = percentage(number1, number2);
+      calculation = fixFloatingPoint(percentage(number1, number2));
       break;
   }
 
   let calculationToString = calculation.toString();
+  console.log(calculationToString);
   calculationToString.length > 15
     ? (calculatorScreen.innerText = "Error")
     : (calculatorScreen.innerText = calculationToString);
@@ -125,6 +134,7 @@ const provideSolution = () => {
   if (!storedOperator || !runningTotal) {
     return;
   }
+
   operate(storedOperator, runningTotal, userInputValueWhenTyping);
 
   userInputValueWhenTyping = calculatorScreen.innerText;
@@ -159,6 +169,7 @@ const addEventListenerToClearButton = () => {
 const addEventListenerToAllClearButton = () => {
   allClearButton.addEventListener("click", () => {
     removeAllCharactersFromScreen();
+    runningTotal = null;
   });
 };
 
@@ -183,6 +194,7 @@ const addEventListenerToOperators = () => {
     operator.addEventListener("click", e => {
       operator = e.target.innerText;
       provideSolution();
+      console.log(operator);
 
       storedOperator = operator;
 
@@ -212,4 +224,3 @@ addEventListenerToClearButton();
 addEventListenerToAllClearButton();
 addEventListenerToPosNeg();
 addEventListenerToOperators();
-addEventListenerToEqualButton();
