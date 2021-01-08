@@ -19,6 +19,7 @@ h1 {
   color: #d1dae3;
   padding: 1rem;
   font-size: 3rem;
+  text-align: center;
 }
 
 .wrapper {
@@ -27,8 +28,7 @@ h1 {
 
   position: relative;
   margin: auto;
-  height: 34.375rem;
-  display: grid;
+
   margin-top: 4rem;
   border: 4px solid #091921;
 
