@@ -11,9 +11,17 @@ body {
   margin: 0;
   background: #091921;
   font-family: Orbitron, sans-serif;
+  min-height: 80vh;
 }
 
-main {
+h1 {
+  margin: 0 auto;
+  color: #d1dae3;
+  padding: 1rem;
+  font-size: 3rem;
+}
+
+.wrapper {
   border: 2px solid red;
   width: 31.25rem;
 
@@ -108,7 +116,8 @@ footer {
 @media screen and (max-width: 500px) {
   body,
   html,
-  main {
+  main,
+  section {
     width: auto;
   }
 }
