@@ -10,7 +10,7 @@ body {
   padding: 0;
   margin: 0;
   background: #091921;
-font-family: Orbitron, sans-serif;
+  font-family: Orbitron, sans-serif;
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -20,11 +20,11 @@ font-family: Orbitron, sans-serif;
 
 main {
   border: 2px solid red;
-  width: 500px;
+  width: 31.25rem;
 
   position: relative;
   margin: auto;
-  height: 550px;
+  height: 34.375rem;
   display: grid;
   margin-top: 4rem;
   border: 4px solid #091921;
@@ -35,20 +35,19 @@ main {
 .screen {
   border: 2px solid #1e1f23;
   background: rgba(57, 58, 62, 0.8);
-  height: 91px;
+  height: 5.68rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   text-align: end;
   padding-right: 6px;
   font-size: 2.5rem;
-  
+
   color: rgba(255, 255, 255, 0.8);
 }
 
 .screen div {
   padding: 0;
-
 }
 
 .buttons {
@@ -70,13 +69,13 @@ button {
   outline: none;
   border: none;
   background: #091921;
-  width: 121px;
-  height: 90px;
+  width: 7.56rem;
+  height: 5.68rem;
   font-size: 2.5rem;
   box-shadow: inset 5px 5px 150px rgba(0, 0, 0, 0.2),
     inset -5px -5px 15px rgba(255, 255, 255, 0.01),
     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 100px rgba(255, 255, 255, 0.1);
-    font-family: Orbitron, sans-serif;
+  font-family: Orbitron, sans-serif;
   color: #d1dae3;
 }
 
@@ -98,18 +97,18 @@ button:active {
   filter: brightness(125%);
 }
 
-
-.upper-row, .pos-neg, .decimal {
-  color: #FF785F;
+.upper-row,
+.pos-neg,
+.decimal {
+  color: #ff785f;
   background: #1d282d;
 }
-
 
 footer {
   color: white;
   margin: auto;
   text-align: center;
-  
 }
 
-
+@media screen and (max-width: 600px) {
+}
