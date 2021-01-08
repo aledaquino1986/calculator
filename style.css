@@ -114,10 +114,10 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
-  body,
-  html,
-  main,
-  section {
-    width: auto;
+  html {
+    font-size: 75%;
+  }
+  main {
+    width: 90%;
   }
 }
